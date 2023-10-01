@@ -126,8 +126,9 @@ app.get('/posts/:id/comments', async (req,res)=>{
 
 app.get('/posts/:id/likes', async (req,res)=>{
     const id = req.params.id;
+    
     const post = await Post.findById(id);
-    res.status(200).send(post.likes);
+    res.status(404).json({ error: 'Post not found' });
 });
 
 //listen on port 3000, start the server and connect to the database
